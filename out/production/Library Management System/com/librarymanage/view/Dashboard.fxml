@@ -78,7 +78,7 @@
                 <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <Label layoutX="17.0" layoutY="379.0" text="From : Binu" textFill="#0c214e">
+        <Label layoutX="17.0" layoutY="379.0" text="From : Farhan" textFill="#0c214e">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
