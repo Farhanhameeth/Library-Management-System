@@ -1,6 +1,6 @@
 package com.librarymanage.service;
 
-import com.librarymanage.service.custom.impl.UserServiceImpl;
+import com.librarymanage.service.custom.impl.*;
 
 public class ServiceFactory {
     private static ServiceFactory serviceFactory;
@@ -17,7 +17,7 @@ public class ServiceFactory {
             case USER:
                 return new UserServiceImpl();
             case CATEGORY:
-                //return new CategoryServiceImpl();
+                return new CategoryServiceImpl();
             case BOOK:
                 //return new BookServiceImpl();
             case MEMBER:
