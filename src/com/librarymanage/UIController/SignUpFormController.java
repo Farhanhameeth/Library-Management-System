@@ -27,13 +27,19 @@ public class SignUpFormController {
     private final UserServiceImpl userService = new UserServiceImpl();
     private final ObservableList<UserDto> userList = FXCollections.observableArrayList();
 
-    public void signUpOnAction(ActionEvent actionEvent) {
+    public void signUpOnAction(ActionEvent actionEvent) throws Exception {
         //validate the email address
         if (!txtEmail.getText().matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
             new Alert(Alert.AlertType.ERROR, "Invalid Email Address...!").show();
             return;
         }
-        UserDto user = new UserDto(
+
+        if (userService.isUserExist(txtEmail.getText())) {
+            new Alert(Alert.AlertType.ERROR, "User already exists...!").show();
+            return;
+        }
+
+            UserDto user = new UserDto(
                 txtEmail.getText().trim(),
                 txtFirstName.getText(),
                 txtLastName.getText(),

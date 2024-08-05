@@ -8,7 +8,7 @@ import com.librarymanage.service.custom.UserService;
 
 public class UserServiceImpl implements UserService {
 
-    private UserDao UserDao = (UserDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.USER);
+    private final UserDao UserDao = (UserDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.USER);
 
     @Override
     public String save(UserDto userDto) throws Exception {
@@ -23,6 +23,11 @@ public class UserServiceImpl implements UserService {
             return getUserDto(entity);
         }
         return null;
+    }
+
+    @Override
+    public boolean isUserExist(String email) throws Exception {
+        return UserDao.isUserExist(email);
     }
 
     private UserEntity getUserEntity(UserDto userDto) {
@@ -42,4 +47,6 @@ public class UserServiceImpl implements UserService {
                 entity.getPassword()
         );
     }
+
+
 }

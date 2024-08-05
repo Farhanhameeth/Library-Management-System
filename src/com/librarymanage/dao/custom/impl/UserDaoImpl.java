@@ -58,4 +58,14 @@ public class UserDaoImpl implements UserDao {
     public String getLastID() throws Exception {
         return "";
     }
+
+    @Override
+    public boolean isUserExist(String email) throws Exception {
+        ResultSet resultSet = CrudUtil.executeQuery("SELECT COUNT(*) FROM user WHERE email = ?", email);
+        if (resultSet.next()) {
+            int count = resultSet.getInt(1);
+            return count > 0;
+        }
+        return false;
+    }
 }
