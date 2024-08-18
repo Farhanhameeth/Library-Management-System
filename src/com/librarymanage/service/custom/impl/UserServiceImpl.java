@@ -1,5 +1,6 @@
 package com.librarymanage.service.custom.impl;
 
+import com.librarymanage.Enum.DaoType;
 import com.librarymanage.dao.DaoFactory;
 import com.librarymanage.dao.custom.UserDao;
 import com.librarymanage.dto.UserDto;
@@ -8,7 +9,7 @@ import com.librarymanage.service.custom.UserService;
 
 public class UserServiceImpl implements UserService {
 
-    private final UserDao UserDao = (UserDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.USER);
+    private final UserDao UserDao = (UserDao) DaoFactory.getInstance().getDao(DaoType.USER);
 
     @Override
     public String save(UserDto userDto) throws Exception {

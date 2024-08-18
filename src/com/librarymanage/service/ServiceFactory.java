@@ -1,5 +1,6 @@
 package com.librarymanage.service;
 
+import com.librarymanage.Enum.ServiceType;
 import com.librarymanage.service.custom.impl.*;
 
 public class ServiceFactory {
@@ -29,9 +30,5 @@ public class ServiceFactory {
             default:
                 return null;
         }
-    }
-
-    public enum ServiceType {
-        USER, CATEGORY, BOOK, MEMBER, BORROWING, RETURN
     }
 }

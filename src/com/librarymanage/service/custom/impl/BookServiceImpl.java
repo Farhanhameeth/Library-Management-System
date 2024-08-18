@@ -1,5 +1,6 @@
 package com.librarymanage.service.custom.impl;
 
+import com.librarymanage.Enum.DaoType;
 import com.librarymanage.dao.DaoFactory;
 import com.librarymanage.dao.custom.BookDao;
 import com.librarymanage.dto.BookDto;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 
 public class BookServiceImpl implements BookService {
 
-    private BookDao bookDao = (BookDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.BOOK);
+    private BookDao bookDao = (BookDao) DaoFactory.getInstance().getDao(DaoType.BOOK);
 
     @Override
     public String save(BookDto bookDto) throws Exception {

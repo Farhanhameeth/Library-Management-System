@@ -1,5 +1,6 @@
 package com.librarymanage.service.custom.impl;
 
+import com.librarymanage.Enum.DaoType;
 import com.librarymanage.dao.DaoFactory;
 import com.librarymanage.dao.custom.MemberDao;
 import com.librarymanage.dto.MemberDto;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 
 public class MemberServiceImpl implements MemberService {
 
-    private MemberDao memberDao = (MemberDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.MEMBER);
+    private MemberDao memberDao = (MemberDao) DaoFactory.getInstance().getDao(DaoType.MEMBER);
 
     @Override
     public String save(MemberDto memberDto) throws Exception {

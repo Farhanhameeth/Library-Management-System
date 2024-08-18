@@ -1,5 +1,6 @@
 package com.librarymanage.service.custom.impl;
 
+import com.librarymanage.Enum.DaoType;
 import com.librarymanage.dao.DaoFactory;
 import com.librarymanage.dao.custom.BookDao;
 import com.librarymanage.dao.custom.BorrowingDao;
@@ -18,10 +19,10 @@ import java.util.ArrayList;
 
 public class ReturnServiceImpl implements ReturnService {
 
-    private final ReturnDao returnDao = (ReturnDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.RETURN);
-    private final BookDao bookDao = (BookDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.BOOK);
-    private final BorrowingDao borrowingDao = (BorrowingDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.BORROWING);
-    private final MemberDao memberDao = (MemberDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.MEMBER);
+    private final ReturnDao returnDao = (ReturnDao) DaoFactory.getInstance().getDao(DaoType.RETURN);
+    private final BookDao bookDao = (BookDao) DaoFactory.getInstance().getDao(DaoType.BOOK);
+    private final BorrowingDao borrowingDao = (BorrowingDao) DaoFactory.getInstance().getDao(DaoType.BORROWING);
+    private final MemberDao memberDao = (MemberDao) DaoFactory.getInstance().getDao(DaoType.MEMBER);
 
 
     @Override

@@ -1,5 +1,6 @@
 package com.librarymanage.service.custom.impl;
 
+import com.librarymanage.Enum.DaoType;
 import com.librarymanage.dao.DaoFactory;
 import com.librarymanage.dao.custom.BookDao;
 import com.librarymanage.dao.custom.BorrowingDao;
@@ -16,9 +17,9 @@ import java.util.ArrayList;
 
 public class BorrowingServiceImpl implements BorrowingService {
 
-    private final BorrowingDao borrowingDao = (BorrowingDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.BORROWING);
-    private final MemberDao memberDao = (MemberDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.MEMBER);
-    private final BookDao bookDao = (BookDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.BOOK);
+    private final BorrowingDao borrowingDao = (BorrowingDao) DaoFactory.getInstance().getDao(DaoType.BORROWING);
+    private final MemberDao memberDao = (MemberDao) DaoFactory.getInstance().getDao(DaoType.MEMBER);
+    private final BookDao bookDao = (BookDao) DaoFactory.getInstance().getDao(DaoType.BOOK);
 
     @Override
     public String save(BorrowingDto borrowingDto) throws Exception {

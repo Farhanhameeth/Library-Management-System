@@ -1,5 +1,6 @@
 package com.librarymanage.service.custom.impl;
 
+import com.librarymanage.Enum.DaoType;
 import com.librarymanage.dao.DaoFactory;
 import com.librarymanage.dao.custom.CategoryDao;
 import com.librarymanage.dto.CategoryDto;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 
 public class CategoryServiceImpl implements CategoryService {
 
-    private CategoryDao CategoryDao = (CategoryDao) DaoFactory.getInstance().getDao(DaoFactory.DaoType.CATEGORY);
+    private CategoryDao CategoryDao = (CategoryDao) DaoFactory.getInstance().getDao(DaoType.CATEGORY);
 
     @Override
     public String save(CategoryDto categoryDto) throws Exception {

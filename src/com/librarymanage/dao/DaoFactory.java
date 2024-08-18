@@ -1,5 +1,6 @@
 package com.librarymanage.dao;
 
+import com.librarymanage.Enum.DaoType;
 import com.librarymanage.dao.custom.impl.*;
 
 public class DaoFactory {
@@ -31,9 +32,5 @@ public class DaoFactory {
             default:
                 return null;
         }
-    }
-
-    public enum DaoType {
-        USER, BOOK, CATEGORY, MEMBER, BORROWING, RETURN
     }
 }
