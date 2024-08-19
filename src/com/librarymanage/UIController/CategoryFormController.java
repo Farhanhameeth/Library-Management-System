@@ -1,7 +1,9 @@
 package com.librarymanage.UIController;
 
+import com.librarymanage.Enum.ServiceType;
 import com.librarymanage.dto.CategoryDto;
-import com.librarymanage.service.custom.impl.CategoryServiceImpl;
+import com.librarymanage.service.ServiceFactory;
+import com.librarymanage.service.custom.CategoryService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,7 +29,7 @@ public class CategoryFormController {
     public TableColumn<CategoryDto,String> colCatDesc;
     public Button btnSaveCat;
 
-    private final CategoryServiceImpl categoryService = new CategoryServiceImpl();
+    private final CategoryService categoryService = ServiceFactory.getInstance().getService(ServiceType.CATEGORY);
     private final ObservableList<CategoryDto> categoryList = FXCollections.observableArrayList();
 
     public void initialize() {

@@ -15,20 +15,20 @@ public class DaoFactory {
         return daoFactory;
     }
 
-    public SuperDao getDao(DaoType type){
+    public <T> T getDao(DaoType type){
         switch (type){
             case USER:
-                return new UserDaoImpl();
+                return (T) new UserDaoImpl();
             case CATEGORY:
-                return new CategoryDaoImpl();
+                return (T) new CategoryDaoImpl();
             case BOOK:
-                return new BookDaoImpl();
+                return (T) new BookDaoImpl();
             case MEMBER:
-                return new MemberDaoImpl();
+                return (T) new MemberDaoImpl();
             case BORROWING:
-                return new BorrowingDaoImpl();
+                return (T) new BorrowingDaoImpl();
             case RETURN:
-                return new ReturnDaoImpl();
+                return (T) new ReturnDaoImpl();
             default:
                 return null;
         }

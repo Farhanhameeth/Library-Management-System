@@ -1,9 +1,13 @@
 package com.librarymanage.UIController;
 
-import com.librarymanage.dao.custom.impl.CategoryDaoImpl;
+import com.librarymanage.Enum.DaoType;
+import com.librarymanage.Enum.ServiceType;
+import com.librarymanage.dao.DaoFactory;
+import com.librarymanage.dao.custom.CategoryDao;
 import com.librarymanage.dto.BookDto;
 import com.librarymanage.entity.CategoryEntity;
-import com.librarymanage.service.custom.impl.BookServiceImpl;
+import com.librarymanage.service.ServiceFactory;
+import com.librarymanage.service.custom.BookService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -41,9 +45,9 @@ public class BookFormController {
     public TableColumn<BookDto, String> colCategory;
     public TableColumn<BookDto, Button> colOption;
 
-    private final BookServiceImpl bookService = new BookServiceImpl();
+    private final BookService bookService = ServiceFactory.getInstance().getService(ServiceType.BOOK);
     private final ObservableList<BookDto> bookList = FXCollections.observableArrayList();
-    private final CategoryDaoImpl categoryDao = new CategoryDaoImpl();
+    private final CategoryDao categoryDao = DaoFactory.getInstance().getDao(DaoType.CATEGORY);
 
     public void initialize() throws Exception {
 

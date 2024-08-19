@@ -1,8 +1,10 @@
 package com.librarymanage.UIController;
 
+import com.librarymanage.Enum.ServiceType;
 import com.librarymanage.dto.BorrowingDto;
 import com.librarymanage.dto.ReturnDto;
-import com.librarymanage.service.custom.impl.ReturnServiceImpl;
+import com.librarymanage.service.ServiceFactory;
+import com.librarymanage.service.custom.ReturnService;
 import com.librarymanage.view.onReturnComplete;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -30,7 +32,7 @@ public class ReturnDetailsFormController {
     public TextField txtFine;
     public CheckBox txtFinePaid;
 
-    private final ReturnServiceImpl returnService = new ReturnServiceImpl();
+    private final ReturnService returnService = ServiceFactory.getInstance().getService(ServiceType.RETURN);
 
     private onReturnComplete listener;
 

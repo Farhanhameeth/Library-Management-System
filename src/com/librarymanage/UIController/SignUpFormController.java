@@ -1,7 +1,9 @@
 package com.librarymanage.UIController;
 
+import com.librarymanage.Enum.ServiceType;
 import com.librarymanage.dto.UserDto;
-import com.librarymanage.service.custom.impl.UserServiceImpl;
+import com.librarymanage.service.ServiceFactory;
+import com.librarymanage.service.custom.UserService;
 import com.librarymanage.util.security.PasswordManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,7 +26,7 @@ public class SignUpFormController {
     public TextField txtEmail;
     public TextField txtPassword;
 
-    private final UserServiceImpl userService = new UserServiceImpl();
+    private final UserService userService = ServiceFactory.getInstance().getService(ServiceType.USER);
     private final ObservableList<UserDto> userList = FXCollections.observableArrayList();
 
     public void signUpOnAction(ActionEvent actionEvent) throws Exception {

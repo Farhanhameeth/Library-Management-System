@@ -1,12 +1,16 @@
 package com.librarymanage.UIController;
 
-import com.librarymanage.dao.custom.impl.BookDaoImpl;
+import com.librarymanage.Enum.DaoType;
+import com.librarymanage.Enum.ServiceType;
+import com.librarymanage.dao.DaoFactory;
+import com.librarymanage.dao.custom.BookDao;
 import com.librarymanage.dto.BorrowingDto;
 import com.librarymanage.dto.MemberDto;
 import com.librarymanage.entity.BookEntity;
-import com.librarymanage.service.custom.impl.BookServiceImpl;
-import com.librarymanage.service.custom.impl.BorrowingServiceImpl;
-import com.librarymanage.service.custom.impl.MemberServiceImpl;
+import com.librarymanage.service.ServiceFactory;
+import com.librarymanage.service.custom.BookService;
+import com.librarymanage.service.custom.BorrowingService;
+import com.librarymanage.service.custom.MemberService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -38,11 +42,11 @@ public class BorrowingFormController {
     public TableColumn<BorrowingDto, Date> colBorrowDate;
     public TableColumn<BorrowingDto, Date> colDueDate;
 
-    private final BorrowingServiceImpl borrowingService = new BorrowingServiceImpl();
+    private final BorrowingService borrowingService = ServiceFactory.getInstance().getService(ServiceType.BORROWING);
     private final ObservableList<BorrowingDto> borrowingList = FXCollections.observableArrayList();
-    private final MemberServiceImpl memberService = new MemberServiceImpl();
-    private final BookDaoImpl bookDao = new BookDaoImpl();
-    private final BookServiceImpl bookService = new BookServiceImpl();
+    private final MemberService memberService = ServiceFactory.getInstance().getService(ServiceType.MEMBER);
+    private final BookDao bookDao = DaoFactory.getInstance().getDao(DaoType.BOOK);
+    private final BookService bookService = ServiceFactory.getInstance().getService(ServiceType.BOOK);
 
     public void initialize() throws Exception {
         colBorrowID.setCellValueFactory(new PropertyValueFactory<>("borrowId"));

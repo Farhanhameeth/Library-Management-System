@@ -13,20 +13,20 @@ public class ServiceFactory {
         return serviceFactory;
     }
 
-    public  SuperService getService(ServiceType type) {
+    public  <T> T getService(ServiceType type) {
         switch (type) {
             case USER:
-                return new UserServiceImpl();
+                return (T) new UserServiceImpl();
             case CATEGORY:
-                return new CategoryServiceImpl();
+                return (T) new CategoryServiceImpl();
             case BOOK:
-                return new BookServiceImpl();
+                return (T) new BookServiceImpl();
             case MEMBER:
-                return new MemberServiceImpl();
+                return (T) new MemberServiceImpl();
             case BORROWING:
-                return new BorrowingServiceImpl();
+                return (T) new BorrowingServiceImpl();
             case RETURN:
-                return new ReturnServiceImpl();
+                return (T) new ReturnServiceImpl();
             default:
                 return null;
         }

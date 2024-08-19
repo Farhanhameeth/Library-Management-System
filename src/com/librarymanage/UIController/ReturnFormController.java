@@ -1,9 +1,11 @@
 package com.librarymanage.UIController;
 
+import com.librarymanage.Enum.ServiceType;
 import com.librarymanage.dto.BorrowingDto;
 import com.librarymanage.dto.ReturnDto;
-import com.librarymanage.service.custom.impl.BorrowingServiceImpl;
-import com.librarymanage.service.custom.impl.ReturnServiceImpl;
+import com.librarymanage.service.ServiceFactory;
+import com.librarymanage.service.custom.BorrowingService;
+import com.librarymanage.service.custom.ReturnService;
 import com.librarymanage.view.onReturnComplete;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -46,9 +48,9 @@ public class ReturnFormController implements onReturnComplete {
     public TableColumn<BorrowingDto, String> colBorrowBookName;
     public TableColumn<BorrowingDto, Date> colBurrowedDate;
 
-    private final ReturnServiceImpl returnService = new ReturnServiceImpl();
+    private final ReturnService returnService = ServiceFactory.getInstance().getService(ServiceType.RETURN);
     private final ObservableList<ReturnDto> returnList = FXCollections.observableArrayList();
-    private final BorrowingServiceImpl borrowingService = new BorrowingServiceImpl();
+    private final BorrowingService borrowingService = ServiceFactory.getInstance().getService(ServiceType.BORROWING);
     private final ObservableList<BorrowingDto> borrowingList = FXCollections.observableArrayList();
 
     public void initialize(){

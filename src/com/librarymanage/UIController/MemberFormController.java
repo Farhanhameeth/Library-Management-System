@@ -1,7 +1,9 @@
 package com.librarymanage.UIController;
 
+import com.librarymanage.Enum.ServiceType;
 import com.librarymanage.dto.MemberDto;
-import com.librarymanage.service.custom.impl.MemberServiceImpl;
+import com.librarymanage.service.ServiceFactory;
+import com.librarymanage.service.custom.MemberService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,7 +37,7 @@ public class MemberFormController {
     public TableColumn<MemberDto, Button>  colOption;
     public Button btnSaveMember;
 
-    private final MemberServiceImpl memberService = new MemberServiceImpl();
+    private final MemberService memberService = ServiceFactory.getInstance().getService(ServiceType.MEMBER);
     private final ObservableList<MemberDto> memberList = FXCollections.observableArrayList();;
 
     public void initialize() {
