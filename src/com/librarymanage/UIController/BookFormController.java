@@ -5,9 +5,10 @@ import com.librarymanage.Enum.ServiceType;
 import com.librarymanage.dao.DaoFactory;
 import com.librarymanage.dao.custom.CategoryDao;
 import com.librarymanage.dto.BookDto;
-import com.librarymanage.entity.CategoryEntity;
+import com.librarymanage.dto.CategoryDto;
 import com.librarymanage.service.ServiceFactory;
 import com.librarymanage.service.custom.BookService;
+import com.librarymanage.service.custom.CategoryService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,7 +48,7 @@ public class BookFormController {
 
     private final BookService bookService = ServiceFactory.getInstance().getService(ServiceType.BOOK);
     private final ObservableList<BookDto> bookList = FXCollections.observableArrayList();
-    private final CategoryDao categoryDao = DaoFactory.getInstance().getDao(DaoType.CATEGORY);
+    private final CategoryService categoryService = ServiceFactory.getInstance().getService(ServiceType.CATEGORY);
 
     public void initialize() throws Exception {
 
@@ -201,8 +202,8 @@ public class BookFormController {
     }
 
     private void setCategory() throws Exception {
-        ArrayList<CategoryEntity> categoryList = categoryDao.getAll();
-        for (CategoryEntity category : categoryList) {
+        ArrayList<CategoryDto> categoryList = categoryService.getAll();
+        for (CategoryDto category : categoryList) {
             cmbBookCategory.getItems().add(category.getCatId()+". "+category.getCatName());
         }
     }

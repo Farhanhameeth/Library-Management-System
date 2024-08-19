@@ -4,6 +4,7 @@ import com.librarymanage.Enum.DaoType;
 import com.librarymanage.Enum.ServiceType;
 import com.librarymanage.dao.DaoFactory;
 import com.librarymanage.dao.custom.BookDao;
+import com.librarymanage.dto.BookDto;
 import com.librarymanage.dto.BorrowingDto;
 import com.librarymanage.dto.MemberDto;
 import com.librarymanage.entity.BookEntity;
@@ -45,7 +46,6 @@ public class BorrowingFormController {
     private final BorrowingService borrowingService = ServiceFactory.getInstance().getService(ServiceType.BORROWING);
     private final ObservableList<BorrowingDto> borrowingList = FXCollections.observableArrayList();
     private final MemberService memberService = ServiceFactory.getInstance().getService(ServiceType.MEMBER);
-    private final BookDao bookDao = DaoFactory.getInstance().getDao(DaoType.BOOK);
     private final BookService bookService = ServiceFactory.getInstance().getService(ServiceType.BOOK);
 
     public void initialize() throws Exception {
@@ -173,8 +173,8 @@ public class BorrowingFormController {
     }
 
     private void setBooks() throws Exception {
-        ArrayList<BookEntity> bookList = bookDao.getAll();
-        for (BookEntity book : bookList) {
+        ArrayList<BookDto> bookList = bookService.getAll();
+        for (BookDto book : bookList) {
             cmbBook.getItems().add(book.getBookID()+" |  "+book.getTitle());
         }
     }
