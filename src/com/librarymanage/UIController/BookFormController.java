@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -48,7 +49,7 @@ public class BookFormController {
 
     private final BookService bookService = ServiceFactory.getInstance().getService(ServiceType.BOOK);
     private final ObservableList<BookDto> bookList = FXCollections.observableArrayList();
-    private final CategoryService categoryService = ServiceFactory.getInstance().getService(ServiceType.CATEGORY);
+     private final CategoryService categoryService = ServiceFactory.getInstance().getService(ServiceType.CATEGORY);
 
     public void initialize() throws Exception {
 
@@ -165,13 +166,16 @@ public class BookFormController {
                         Optional<ButtonType> buttonType = alert.showAndWait();
                         if (buttonType.get().equals(ButtonType.YES)) {
                             try {
-                                String result = bookService.delete(book.getBookID());
+                                String result = bookService.delete(book.getBookID()); 
                                 if ("Success".equals(result)) {
                                     new Alert(Alert.AlertType.INFORMATION, "Book Deleted Successfully...").show();
                                     loadBook();
                                 } else {
                                     new Alert(Alert.AlertType.ERROR, "Book Delete Failure...!").show();
                                 }
+                            } catch (SQLIntegrityConstraintViolationException e) {
+                                new Alert(Alert.AlertType.ERROR, "Book is in use...Cannot be Deleted...!").show();
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

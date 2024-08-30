@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
@@ -148,6 +149,9 @@ public class MemberFormController {
                                 } else {
                                     new Alert(Alert.AlertType.ERROR, "Member Delete Failure...!").show();
                                 }
+                            } catch (SQLIntegrityConstraintViolationException e) {
+                                new Alert(Alert.AlertType.ERROR, "Member is in use...Cannot be Deleted...!").show();
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
